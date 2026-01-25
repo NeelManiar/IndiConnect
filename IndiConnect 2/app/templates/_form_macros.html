@@ -1,0 +1,44 @@
+{% macro render_field(field) %}
+<div class="mb-3">
+    {{ field.label(class="form-label") }}
+    
+    {# 1. Determine the default class based on field type #}
+    {% set default_class = "form-select" if field.type == 'SelectField' else "form-control" %}
+    
+    {# 2. If 'class' wasn't passed in kwargs, use our default #}
+    {% if 'class' not in kwargs %}
+        {% set _ = kwargs.update({'class': default_class}) %}
+    {% endif %}
+
+    {# 3. Render the field once with the merged kwargs #}
+    {{ field(**kwargs)|safe }}
+    
+    {% if field.errors %}
+    <ul class="list-unstyled">
+        {% for error in field.errors %}
+        <li class="text-danger small">{{ error }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if field.description %}
+    <div class="form-text text-muted">{{ field.description }}</div>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro render_quick_form(form) %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {% for field in form %}
+        {% if field.widget.input_type != 'hidden' and field.type != 'CSRFTokenField' and field.type != 'SubmitField' %}
+            {{ render_field(field) }}
+        {% endif %}
+    {% endfor %}
+    
+    {# Render the submit button separately #}
+    <div class="d-grid mt-4">
+        {{ form.submit(class="btn btn-primary btn-lg custom-btn") }}
+    </div>
+</form>
+{% endmacro %}

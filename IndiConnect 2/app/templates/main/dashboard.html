@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <section class="dashboard-banner mb-5">
+        <img src="{{ url_for('static', filename='img/image.png') }}" class="banner-img" alt="Community Support">
+        <div class="banner-content-right">
+            <div class="banner-badge">
+                <i class="fas fa-shield-alt"></i> Account Verified
+            </div>
+        </div>
+    </section>
+
+    <header class="header-bar mb-4">
+        <div class="profile-info d-flex align-items-center">
+            <img src="{{ url_for('static', filename='img/avatar.png') }}" class="profile-avatar me-3" alt="Worker Avatar">
+            <div>
+                <h3 class="mb-0 app-name-color">
+                    Hello, {{ current_user.username | capitalize }}
+                </h3>
+                <p class="text-muted mb-0">{{ current_user.job_title or 'Software Engineer' }}</p>
+            </div>
+        </div>
+        <a href="{{ url_for('auth.logout') }}" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </header>
+    
+    <div class="row g-3 mb-5">
+        <div class="col-md-4">
+            <div class="status-card">
+                <i class="fas fa-handshake status-icon status-mentor"></i>
+                <h6 class="text-muted">New Mentorship Match</h6>
+                <h3>{{ data.mentor_matches }}</h3>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="status-card">
+                <i class="fas fa-bell status-icon status-resource"></i>
+                <h6 class="text-muted">Resource Alerts</h6>
+                <h3>{{ data.resource_alerts }}</h3>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="status-card">
+                <i class="fas fa-cogs status-icon status-feedback"></i>
+                <h6 class="text-muted">Feedback In Progress</h6>
+                <h3>{{ data.feedback_in_progress }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card feature-card-blue">
+                <div>
+                    <div class="card-icon"><i class="fas fa-graduation-cap fa-3x"></i></div>
+                    <h4 class="card-title">Career Catalyst</h4>
+                    <p>Find guidance, build skills, and transition to your next role.</p>
+                </div>
+                <a href="{{ url_for('mentor.index') }}" class="custom-btn-light">Find a Mentor</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card feature-card-green">
+                <div>
+                    <div class="card-icon"><i class="fas fa-shield-alt fa-3x"></i></div>
+                    <h4 class="card-title">Stability Locator</h4>
+                    <p>Access essential services: clinics, food banks, and legal aid nearby.</p>
+                </div>
+                <a href="{{ url_for('resource.index') }}" class="custom-btn-light">Search Services</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="feature-card feature-card-red">
+                <div>
+                    <div class="card-icon"><i class="fas fa-bullhorn fa-3x"></i></div>
+                    <h4 class="card-title">Eyes on the Ground</h4>
+                    <p>Anonymously report safety hazards, policy issues, or maintenance needs.</p>
+                </div>
+                <a href="{{ url_for('feedback.index') }}" class="custom-btn-light">Report Issue</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

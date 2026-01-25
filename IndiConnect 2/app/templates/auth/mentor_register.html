@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="mt-4">🚀 Become a Mentor</h2>
+            <p>Share your expertise and help job seekers land their dream roles.</p>
+            <hr>
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                
+                {# Username Field #}
+                <div class="form-group">
+                    {{ form.username.label }}
+                    {{ form.username(size=32, class="form-control", placeholder="Choose a username") }}
+                    {% for error in form.username.errors %}
+                    <span class="text-danger">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                {# Email Field #}
+                <div class="form-group mt-3">
+                    {{ form.email.label }}
+                    {{ form.email(size=32, class="form-control", placeholder="Your professional email") }}
+                    {% for error in form.email.errors %}
+                    <span class="text-danger">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                {# Job Title Field #}
+                <div class="form-group mt-3">
+                    {{ form.job_title.label }}
+                    {{ form.job_title(size=32, class="form-control", placeholder="e.g., Senior Software Engineer") }}
+                    {% for error in form.job_title.errors %}
+                    <span class="text-danger">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                {# Skills/Expertise Field #}
+                <div class="form-group mt-3">
+                    {{ form.skills_offered.label }}
+                    {{ form.skills_offered(rows=4, class="form-control", placeholder="List skills separated by commas: Python, AWS, Data Structures...") }}
+                    {% for error in form.skills_offered.errors %}
+                    <span class="text-danger">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                {# Password Field #}
+                <div class="form-group mt-3">
+                    {{ form.password.label }}
+                    {{ form.password(size=32, class="form-control") }}
+                    {% for error in form.password.errors %}
+                    <span class="text-danger">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                {# Repeat Password Field #}
+                <div class="form-group mt-3">
+                    {{ form.password2.label }}
+                    {{ form.password2(size=32, class="form-control") }}
+                    {% for error in form.password2.errors %}
+                    <span class="text-danger">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+
+                {{ form.submit(class="btn btn-primary mt-4") }}
+            </form>
+            <p class="mt-3">Already have a mentor account? <a href="{{ url_for('auth.login') }}">Log in here</a></p>
+        </div>
+    </div>
+{% endblock %}

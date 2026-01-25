@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import '_form_macros.html' as forms %}
+
+{% block content %}
+<div class="container">
+    <div class="text-center mt-5">
+        <h1 class="profile-title">Set Up Your Catalyst Profile</h1>
+        <p class="profile-subtitle">Tell us about your current role and the skill you want to learn so we can find the best match.</p>
+    </div>
+
+    <div class="profile-setup-card shadow-lg">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-4">
+                {{ forms.render_field(form.job_title, placeholder="e.g., Software Engineer") }}
+            </div>
+
+            <div class="mb-4">
+                {# Updated variable name here #}
+                {{ forms.render_field(form.desired_skill) }}
+                <div class="form-text text-muted">Choosing a specific skill helps our algorithm find better mentor matches.</div>
+            </div>
+
+            <div class="d-grid mt-5">
+                {{ form.submit(class="btn btn-primary btn-lg custom-btn") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

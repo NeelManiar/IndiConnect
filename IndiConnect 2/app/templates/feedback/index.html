@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% import '_form_macros.html' as forms %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card p-4 shadow-lg border-danger" style="background-color: white;">
+                <h2 class="app-name-color mb-3">
+                    <i class="fas fa-bullhorn me-2 text-danger"></i> Eyes on the Ground
+                </h2>
+                <p class="text-muted border-bottom pb-3 mb-4">
+                    Report safety hazards, maintenance issues, or policy concerns. **All reports are anonymous** and confidential.
+                </p>
+
+                {# Ensure 'feedback.index' is the correct name of your route function #}
+                <form action="{{ url_for('feedback.index') }}" method="POST" class="feedback-form">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            {# Just pass the field. The macro handles the CSS class #}
+                            {{ forms.render_field(form.category) }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ forms.render_field(form.severity) }}
+                        </div>
+                    </div>
+                
+                    {# Location Details #}
+                    {{ forms.render_field(form.location_details) }}
+                    
+                    {# Detailed Description #}
+                    {{ forms.render_field(form.description, rows=5) }}
+                    
+                    <div class="d-grid mt-4">
+                        {{ form.submit(class="btn btn-danger btn-lg custom-btn") }}
+                    </div>
+                </form>
+
+                <div class="mt-4 text-center">
+                    <a href="{{ url_for('feedback.status') }}" class="btn btn-sm btn-outline-secondary">View My Reports & Status</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# CSS Safeguard: Forces dropdowns to be visible even if Bootstrap is acting up #}
+<style>
+    select.form-select {
+        display: block !important;
+        color: #212529 !important;
+        background-color: #fff !important;
+        border: 1px solid #ced4da !important;
+        opacity: 1 !important;
+    }
+</style>
+{% endblock %}

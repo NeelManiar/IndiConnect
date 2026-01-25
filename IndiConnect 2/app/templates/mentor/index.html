@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="app-name-color mb-4">Available Mentors for Your Goal: {{ current_user.desired_skill or 'Any Skill' }}</h2>
+
+    <div class="row g-4">
+        {% for mentor in mentors %}
+        <div class="col-lg-4 col-md-6">
+            <div class="card mentor-card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ mentor.name }} <i class="fas fa-check-circle text-success" title="Verified Mentor"></i></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ mentor.profession }}</h6>
+                    <p class="card-text">
+                        <strong>Skills Offered:</strong> {{ mentor.skills_offered or 'General Career Guidance' }}<br>
+                        <strong>Availability:</strong> {{ mentor.availability or 'Flexible' }}
+                    </p>
+                    <a href="{{ url_for('mentor.connect', mentor_id=mentor.id) }}" class="btn btn-sm btn-primary custom-btn">Request Mentorship</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="alert alert-info">No verified mentors are currently available for matching. Please check back later!</div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="mt-5 text-center">
+        <a href="{{ url_for('mentor.profile_setup') }}" class="btn btn-outline-secondary">Update My Profile/Skills</a>
+    </div>
+</div>
+{% endblock %}

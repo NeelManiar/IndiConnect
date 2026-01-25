@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-wrapper d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+    <div class="card p-4 shadow-lg login-card locator-filter-container" style="width: 100%; max-width: 400px;">
+        <h2 class="text-center mb-4 app-name-color">IndiConnect</h2>
+        <p class="text-center text-muted">Worker Sign In</p>
+        
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control", placeholder="Your Worker ID or Username") }}
+            </div>
+            <div class="mb-3">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control", placeholder="Password") }}
+            </div>
+            <div class="mb-3 form-check">
+                {{ form.remember_me(class="form-check-input") }}
+                {{ form.remember_me.label(class="form-check-label text-white") }}
+            </div>
+            <div class="d-grid">
+                {{ form.submit(class="btn btn-primary btn-lg custom-btn") }}
+            </div>
+        </form>
+
+        <hr class="mt-4 border-secondary">
+
+        <p class="text-center text-muted small mt-3">
+            Need an account? <a href="{{ url_for('auth.register') }}" class="text-primary">Register here</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

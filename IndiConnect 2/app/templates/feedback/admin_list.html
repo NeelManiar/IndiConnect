@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-danger mb-4">Admin Panel: All Feedback Reports</h2>
+    <p class="text-muted">Review and manage anonymous worker reports.</p>
+
+    <table class="table table-striped table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Severity</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for report in reports %}
+            <tr>
+                <td>{{ report.id }}</td>
+                <td>{{ report.category }}</td>
+                <td>{{ report.location_details }}</td>
+                <td>{{ report.severity }}</td>
+                <td>
+                    <span class="badge bg-{{ report.status | lower | replace(' ', '-') }}">{{ report.status }}</span>
+                </td>
+                <td>{{ report.timestamp.strftime('%Y-%m-%d') }}</td>
+                <td>
+                    <a href="{{ url_for('feedback.admin_edit', report_id=report.id) }}" class="btn btn-sm btn-outline-danger">Review/Update</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7" class="text-center text-info">No reports currently in the system.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="mt-4">
+        <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

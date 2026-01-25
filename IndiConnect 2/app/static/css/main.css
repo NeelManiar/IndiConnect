@@ -1,0 +1,244 @@
+/* ===================================
+   1. CORE VARIABLES & RESET
+   =================================== */
+   :root {
+    --bg-dark: #0f111a;        
+    --bg-surface: #1a1d2e;     
+    --bg-elevated: #252945;    
+    
+    --primary-blue: #3b82f6;   
+    --secondary-green: #4ade80; 
+    --accent-red: #ff5252;     
+    
+    --text-main: #ffffff;
+    --text-muted: #9494b8;
+    --border-color: #30363d;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+body, html {
+    background-color: #0b0e14 !important; /* Deep dark blue/black */
+    color: #ffffff !important;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* ===================================
+   2. GLOBAL "FORCE DARK" RULES
+   =================================== */
+/* This kills any white boxes automatically appearing on cards or pages */
+.card, 
+.login-card, 
+.locator-filter-container, 
+.profile-setup-card,
+.bg-white,
+div[style*="background-color: white"] {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    border-radius: 16px !important;
+}
+
+/* ===================================
+   3. FORMS & VISIBILITY FIXES
+   =================================== */
+.form-label, 
+label, 
+.form-check-label,
+.text-muted,
+p.text-muted {
+    color: #e1e1e6 !important; 
+    font-weight: 500 !important;
+    margin-bottom: 0.5rem;
+    display: block;
+    opacity: 1 !important;
+}
+
+/* Input fields - High contrast for usability */
+.form-control, .form-select {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 0.8rem !important;
+    border-radius: 8px !important;
+}
+
+.form-control::placeholder {
+    color: #718096;
+}
+
+/* ===================================
+   4. DASHBOARD BANNER (NO OVERLAY, BADGE RIGHT)
+   =================================== */
+.dashboard-banner {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: var(--bg-surface);
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(1.0); /* Full clear resolution */
+}
+
+/* Pushes Account Verified and Mentor badges to the right */
+.banner-content-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+
+.banner-badge {
+    background: rgba(0, 0, 0, 0.5); 
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ===================================
+   5. DASHBOARD COMPONENTS
+   =================================== */
+.header-bar {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.profile-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-blue);
+}
+
+.status-card {
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.status-card h3 {
+    font-size: 2.2rem;
+    color: var(--primary-blue) !important;
+    margin-top: 10px;
+}
+
+/* ===================================
+   6. FEATURE CARDS (BOTTOM)
+   =================================== */
+.feature-card {
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    color: white !important;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover { transform: translateY(-8px); }
+
+.feature-card-blue { background: linear-gradient(135deg, #1a365d, #2b6cb0); }
+.feature-card-green { background: linear-gradient(135deg, #064e3b, #2f855a); }
+.feature-card-red { background: linear-gradient(135deg, #742a2a, #c53030); }
+
+.feature-card a {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white !important;
+    text-decoration: none !important;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.feature-card a:hover {
+    background-color: white;
+    color: black !important;
+}
+
+/* ===================================
+   7. BUTTONS & UI ELEMENTS
+   =================================== */
+.btn-primary, .custom-btn {
+    background-color: var(--primary-blue) !important;
+    border: none !important;
+    font-weight: 700 !important;
+    padding: 12px !important;
+}
+
+.btn-outline-info {
+    color: var(--primary-blue) !important;
+    border-color: var(--primary-blue) !important;
+}
+
+.btn-outline-info:hover {
+    background-color: var(--primary-blue) !important;
+    color: white !important;
+}
+
+.logout-btn {
+    color: var(--accent-red) !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Map fix */
+#map {
+    border-radius: 16px;
+    filter: invert(100%) hue-rotate(180deg) brightness(95%);
+}
+
+/* ===================================
+   8. CLEANUP
+   =================================== */
+.banner-overlay {
+    display: none !important; /* Forces removal of the black box in your screenshot */
+}
+
+
+.table {
+    --bs-table-bg: transparent !important;
+    --bs-table-color: #ffffff !important;
+    background-color: #161b22 !important; /* Slightly lighter than body for depth */
+    border-color: #30363d !important;
+}
+
+.table th {
+    color: #58a6ff !important; /* Blue headers for visibility */
+    background-color: #1c2128 !important;
+}
+
+.table td {
+    color: #c9d1d9 !important; /* Light gray text for readability */
+}
+
+/* Lock links and buttons */
+.btn-back {
+    color: #ff7b72 !important; /* The red color from your "Back to Dashboard" link */
+}

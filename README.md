@@ -1,4 +1,4 @@
-# IndiConnect (W.I.P)
+# IndiConnect
 An interactive web app designed to improve the lives of workers and employees by helping them avail revolutionary features designed exclusively for them. The platform used was Flask along with basic Jinja, HTML, CSS, JS, and of course, Python. 
 
 The project is on a demo server. I have also uploaded a folder with all the screenshots.

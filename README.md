@@ -15,11 +15,16 @@ P.S. I was offered some help by my friends Nityanta and Mridul in developing thi
 
 
 ![Screenshot 1](https://github.com/NeelManiar/IndiConnect/blob/main/IndiConnect%202/Screenshots/Screenshot%202026-01-09%20at%202.02.07%E2%80%AFPM.png?raw=true)
+EYES ON THE GROUND
 
 ![Screenshot 2](https://github.com/NeelManiar/IndiConnect/blob/main/IndiConnect%202/Screenshots/Screenshot%202026-01-24%20at%203.41.31%E2%80%AFPM.png?raw=true)
+MENTOR DASHBOARD
 
 ![Screenshot 3](https://github.com/NeelManiar/IndiConnect/blob/main/IndiConnect%202/Screenshots/Screenshot%202026-01-24%20at%203.41.44%E2%80%AFPM.png?raw=true)
+CAREER CATALYST
 
 ![Screenshot 4](https://github.com/NeelManiar/IndiConnect/blob/main/IndiConnect%202/Screenshots/Screenshot%202026-01-24%20at%203.44.42%E2%80%AFPM.png?raw=true)
+EYES ON THE GROUND
 
-![Screenshot 5](https://github.com/NeelManiar/IndiConnect/blob/main/IndiConnect%202/Screenshots/Screenshot%202026-01-24%20at%203.51.19%E2%80%AFPM.png?raw=true)y
+![Screenshot 5](https://github.com/NeelManiar/IndiConnect/blob/main/IndiConnect%202/Screenshots/Screenshot%202026-01-24%20at%203.51.19%E2%80%AFPM.png?raw=true)
+EMPLOYEE DASHBOARD                                                                                                                                    
